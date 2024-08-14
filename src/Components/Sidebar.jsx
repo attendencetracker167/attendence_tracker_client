@@ -108,7 +108,7 @@ const Sidebar = () => {
           } hover:bg-lime-50 hover:bg-opacity-15 duration-100 `}
               onClick={() => setOpen(false)}
             >
-              <img src={`../../public/assets/${Menu.src}.png`} />
+              <img src={`../../public/assets/${Menu.src}.svg`} />
               <span
                  data-te-toggle="tooltip"
                  data-te-placement="right"
