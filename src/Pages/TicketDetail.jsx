@@ -101,7 +101,8 @@ const TicketDetail = () => {
             </h1>
           </div>
           <div className="flex flex-col items-start shadow-4xl p-1 rounded-[3px]">
-            <h1 className="md:text-lg font-semibold">Description : </h1>
+            <h1 className="md:text-sm font-medium">Title :<span className="xs:max-sm:text-sm font-normal text-sm ">{TicketDetail.title}</span> </h1>
+            <h1 className="md:text-lg font-medium">Description : </h1>
             <p className="xs:max-sm:text-sm">{TicketDetail.description}</p>
           </div>
           {TicketDetail.image ? (
@@ -134,7 +135,7 @@ const TicketDetail = () => {
           }
         </div>
       <div>
-        {user.role === "admin" ? (
+        {(user.role === "admin" || "superadmin") ? (
           <AssignTo
             status={TicketDetail.status}
             ticketId={TicketDetail._id}
@@ -145,7 +146,7 @@ const TicketDetail = () => {
         )}
       </div>
       <div>
-        {user.role === "admin" ? (
+        {(user.role === "admin" || "superadmin") ? (
           <CloseTicket
             ticketId={TicketDetail._id}
             closed={TicketDetail.status}

@@ -2,7 +2,6 @@ import {  useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import axios from "axios";
-import registerLoader from '../../public/brand.svg';
 import useAuth from "../hooks/useAuth";
 const Register = () => {
   // const[showSubrole,setShowSubrole]=useState("")
@@ -72,15 +71,10 @@ const Register = () => {
     fetcRoles();
   }, [api]);
   return (
-    <div className="">
+    <div className="pb-10">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6  lg:px-8 duration-300">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-          <img
-            className="mx-auto h-10 w-auto"
-            src={registerLoader}
-            alt="Your Company"
-          />
-          <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-2 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             User Registration
           </h2>
         </div>
@@ -189,10 +183,9 @@ const Register = () => {
                 <option selected defaultValue={null}>
                   Select user Role
                 </option>
-                <option value="resident">Resident</option>
-                <option value="maintainence">Maintainence</option>
+                <option value="resident">Project Manager</option>
+                <option value="maintainence">Employee</option>
                 <option value="admin">Admin</option>
-                <option value="owner">Owner</option>
               </select>
             </div>
             <div

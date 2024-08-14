@@ -42,7 +42,7 @@ const TicketItem = ({
   //     : description;
   const shorTitle = title.length > 30 ? title.substring(0, 30) + "..." : title;
   return (
-    <Link to={`/${role=="superadmin"?"admin":role}/ticket/${id}`}>
+    <Link to={`/${role=="superadmin"?"admin":(role=="resident"?"project-manager":role=="maintainence"?"employee":"admin")}/ticket/${id}`}>
     <div
       key={i}
       className={`shadow-4xl   active:scale-[0.9] duration-500 h-[100px] xs:w-[280px] xl:w-[260px] xxl:w-[256px]  break-words cursor-pointer rounded-md relative ${

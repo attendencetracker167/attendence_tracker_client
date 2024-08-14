@@ -13,7 +13,7 @@ const DeleteUser = ({ id,email,Username,role }) => {
   const handleDelete = async () => {
     const confirmResult = await Swal.fire({
       title: `Are you sure To Delete?`,
-      text:`${role} || ${email}`,
+      text:`${role=="resident"?"project-manager":role=="maintainence"?"employee":"admin"} || ${email}`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

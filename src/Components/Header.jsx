@@ -6,13 +6,13 @@ const Header = () => {
   return (
     <div className="bg-gray-900  text-white h-[58px] mb-6   flex items-center justify-between px-2 xs:max-sm:w-full sm:px-5 sm:w-[calc(100%-56px)] z-[10] fixed top-0 ">
       <div className="flex items-center">
-        <h1 className="xs:max-sm:text-xs">Appartment Maintainence</h1>
+        <h1 className="xs:max-sm:text-xs">Attendence Tracking System</h1>
       </div>
       <div className="">
-        <Link className="flex items-center space-x-3" to={`/${user?.role=="superadmin"?"admin":user.role}/profile`}>
+        <Link className="flex items-center space-x-3" to={`/${user?.role=="superadmin"?"admin":(user.role=="resident"?"project-manager":user.role=="maintainence"?"employee":"admin")}/profile`}>
           <div className="relative">
             <img
-              className="relative rounded-full border-2 border-white  h-[40px]"
+              className="relative rounded-full border-2 border-white object-cover min-w-10 max-w-10 max-h-10 min-h-10"
               src={`${import.meta.env.VITE_REACT_APP_PROFILE_URL}/${
                 user.profile ?? "no-avator.png"
               }`}

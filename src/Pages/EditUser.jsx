@@ -13,6 +13,8 @@ const UserProfile = () => {
   const [email, Setemail] = useState("");
   const [Role, setRole] = useState("");
   const [subRole, setSubRole] = useState("");
+  const[role,setroles]=useState([])
+
   // const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [ConfirmnewPassword, setConfirmNewPassword] = useState("");
@@ -44,7 +46,21 @@ const UserProfile = () => {
     };
     getUser();
   }, [api,token,userId]);
-
+  useEffect(() => {
+    const fetcRoles = async () => {
+      try {
+        const response = await axios.get(`${api}/user/maintainence/get`);
+        setroles(response.data);
+      } catch (error) {
+        Swal.fire({
+          title: "error",
+          text: `${error.response.data.message}`,
+          icon: "warning",
+        });
+      }
+    };
+    fetcRoles();
+  }, [api]);
   const changeProfilePicture = async () => {
     setIsAvatorTouched(false);
     const TicketData = new FormData();
@@ -298,8 +314,8 @@ const UserProfile = () => {
                 <option selected defaultValue={null}>
                   Select user Role
                 </option>
-                <option value="resident">Resident</option>
-                <option value="maintainence">Maintainence</option>
+                <option value="resident">Project Manager</option>
+                <option value="maintainence">Employee</option>
                 <option value="admin">Admin</option>
                 <option value="owner">Owner</option>
               </select>
@@ -318,11 +334,20 @@ const UserProfile = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-1 focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600 outline-none"
                 onChange={(e) => setSubRole(e.target.value)}
               >
-                <option>Select Sub Role</option>
-                <option value="plumber">Plumber</option>
-                <option value="electrical">Electrical</option>
-                <option value="hvac">HVAC</option>
-                <option value="technician">Technician</option>
+                <option selected defaultValue={null}>
+                  Select Sub Role
+                </option>
+                {
+                  role.length>0?<>{
+                    role.map(({role,_id})=>{
+                      return  <option key={_id}  value={role}>
+                      {role}
+                    </option>
+                    })
+                  }</>:<> <option value={"noCategory"}>
+                 No Category
+                </option></>
+              }
               </select>
             </div>
 

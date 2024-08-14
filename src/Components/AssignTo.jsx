@@ -12,7 +12,7 @@ const AssignTo = ({ status, category, ticketId }) => {
   const [Maintainers, SetMaintainers] = useState([]);
   const [AssignTo, SetAssignTo] = useState(null);
   const navigate = useNavigate();
-
+  console.log(category);
   useEffect(() => {
     if (category) {
       const FetchCategoryUsers = async () => {
@@ -118,7 +118,7 @@ const AssignTo = ({ status, category, ticketId }) => {
             }}
             value={AssignTo}
           >
-            <option value='select maintainer'>click to Select Maintainer</option>
+            <option value='select maintainer'>Select Employee</option>
             {Maintainers.length > 0 ? (
               Maintainers.map(({ username, _id }, i) => {
                 return (
@@ -132,7 +132,7 @@ const AssignTo = ({ status, category, ticketId }) => {
                 );
               })
               ) : (
-                <option value={null}>No {category} Maintaners</option>
+                <option value={null}>No {category} Employee</option>
                 )}
           </select>
                 <h1 className="rounded-full  bg-indigo-500 p-1 xs:max-sm:rotate-90"><FaCaretRight/></h1>

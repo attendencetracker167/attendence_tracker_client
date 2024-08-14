@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const MainDash = () => {
   const { api, user } = useAuth();
   const token = user?.token;
-  const [mainDashdata, setMainDashData] = useState({});
+  const [userDashData, setuserDashData] = useState({});
   const navigate=useNavigate()
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const MainDash = () => {
             withCredentials: true,
           }
         );
-        setMainDashData(response.data);
+        setuserDashData(response.data);
       } catch (error) {
         if("Unauthorized - Token has expired"===error.response.data.message){
           Swal.fire({
@@ -50,27 +50,27 @@ const MainDash = () => {
     ">
       
         <div className="px-3 bg-green-700 rounded-[8px] h-[150px] w-min-[200px]   flex flex-col items-center justify-center xs:max-sm:min-w-[258px] xs:max-sm:max-w-[256px] sm:min-w-[200px] sm:max-w-[200px]  md:min-w-[258px] md:max-w-[258px] xl:min-w-[200px] xxl:min-w-[320px]">
-          <h1 className="font-medium ">Role : Employee</h1>
-          <h1 className="font-medium text-sm">Subrole : {user.subrole}</h1>
+        <h1 className="font-medium text-lg">Open Tickets</h1>
+        <h1 className="font-semibold">{userDashData.open}</h1>
         </div>
         <div className="px-3 bg-red-700 rounded-[8px] h-[150px] w-min-[200px]   flex flex-col items-center justify-center xs:max-sm:min-w-[258px] xs:max-sm:max-w-[258px] sm:min-w-[200px] sm:max-w-[200px]  md:min-w-[258px] md:max-w-[258px] xl:min-w-[260px] xxl:min-w-[320px]">
           <h1 className="font-medium text-lg">Closed Tickets</h1>
-          <h1 className="font-semibold">{mainDashdata.closed}</h1>
+          <h1 className="font-semibold">{userDashData.closed}</h1>
         </div>
         <div className=" px-3 bg-yellow-500 rounded-[8px] h-[150px] w-min-[200px]   flex flex-col items-center justify-center xs:max-sm:min-w-[258px] xs:max-sm:max-w-[258px] sm:min-w-[200px] sm:max-w-[200px]  md:min-w-[258px] md:max-w-[258px] xl:min-w-[200px] xxl:min-w-[320px]">
           <h1 className="font-medium text-lg">InProgress Tickets</h1>
-          <h1 className="font-semibold">{mainDashdata.inProgress}</h1>
+          <h1 className="font-semibold">{userDashData.inProgress}</h1>
         </div>
       <div className="px-3 bg-blue-600 rounded-[8px] h-[150px] w-min-[200px]   flex flex-col items-center justify-center xs:max-sm:min-w-[258px] xs:max-sm:max-w-[258px] sm:min-w-[200px] sm:max-w-[200px]  md:min-w-[258px] md:max-w-[258px] xl:min-w-[200px] xxl:min-w-[320px]">
         <h1 className="font-semibold text-xl">Total Tickets</h1>
-        <h1 className="font-semibold">{ mainDashdata.closed+mainDashdata.inProgress }</h1>
+        <h1 className="font-semibold">{ userDashData.open+userDashData.closed+userDashData.inProgress }</h1>
       </div>
     </div>
     
       <Dashboard
-        openTic={mainDashdata.open}
-        progressTic={mainDashdata.inProgress}
-        closeTic={mainDashdata.closed}
+        openTic={userDashData.open}
+        progressTic={userDashData.inProgress}
+        closeTic={userDashData.closed}
       />
     
   </div>

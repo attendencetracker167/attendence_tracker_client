@@ -12,6 +12,7 @@ import UserTickets from "./Pages/UserTickets";
 import TicketDetail from "./Pages/TicketDetail";
 import AdminDash from "./Pages/AdminDash";
 import MainDash from "./Pages/MainDash";
+import UserDash from './Pages/UserDash'
 // import useAuth from "./hooks/useAuth";
 import AssignTickets from "./Pages/AssignedTickets";
 import AllUsers from "./Pages/AllUsers";
@@ -19,6 +20,8 @@ import EditUser from "./Pages/EditUser";
 import UserDetail from "./Pages/UserDetail";
 import Profile from "./Pages/Profile";
 import Settings from "./Pages/Settings";
+import ClockInPage from "./Pages/ClockInPage";
+import UserRecordsPage from "./Pages/UserRecordsPage";
 function App() {
   return (
     <Router>
@@ -26,9 +29,11 @@ function App() {
         <Routes>
           <Route index path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/resident" element={<ProtectedRoute roles={["resident"]} />}>
+          <Route path="/project-manager" element={<ProtectedRoute roles={["project-manager"]} />}>
             <Route path="" element={<ErrorPage />} />
             <Route path="create-ticket" element={<CreateTicket />} />
+            <Route path="dashboard" element={<UserDash/>} />
+            <Route path="clockin" element={<ClockInPage />} />
             <Route path="tickets" element={<UserTickets />} />
             <Route path="ticket/:ticketId" element={<TicketDetail />} />
             <Route path="profile" element={<Profile />} />
@@ -39,6 +44,8 @@ function App() {
           >
             <Route path="" element={<ErrorPage />} />
             <Route path="dashboard" element={<AdminDash />} />
+            <Route path="clockin" element={<ClockInPage />} />
+            <Route path="all-records" element={<UserRecordsPage />} />
             <Route path="register" element={<Register />} />
             <Route path="create-ticket" element={<CreateTicket />} />
             <Route path="tickets" element={<AllTickets />} />
@@ -50,20 +57,13 @@ function App() {
             <Route path="profile" element={<Profile />} />
 
           </Route>
-
-          <Route path="/owner" element={<ProtectedRoute roles={["owner"]} />}>
-            <Route path="dashboard" element={<AdminDash />} />
-            <Route path="tickets" element={<AllTickets />} />
-            <Route path="ticket/:ticketId" element={<TicketDetail />} />
-            <Route path="profile" element={<Profile />} />
-
-          </Route>
      
           <Route
-            path="/maintainence"
-            element={<ProtectedRoute roles={["maintainence"]} />}
+            path="/employee"
+            element={<ProtectedRoute roles={["employee"]} />}
           >
             <Route path="dashboard" element={<MainDash />} />
+            <Route path="clockin" element={<ClockInPage />} />
             <Route path="tickets" element={<AssignTickets />} />
             <Route
               path={`ticket/:ticketId`}

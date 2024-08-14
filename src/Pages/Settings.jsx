@@ -78,7 +78,7 @@ const Settings = () => {
   return (
     <div className="grid place-content-center ">
       <div className="min-h-[400px] xs:max-sm:min-w-[310px] xs:max-sm:max-w-[310px] sm:min-w-[500px]  flex flex-col items-center justify-start p-5   rounded-md space-y-5 ">
-        <h1 className="bg-indigo-500 rounded-2xl text-white px-3 ">Add Maintainers Role</h1>
+        <h1 className="bg-indigo-500 rounded-2xl text-white px-3 ">Add Employees Role</h1>
         <form className="" onSubmit={(e)=>createRole(e)}>
         <div>
               <label

@@ -41,7 +41,7 @@ const AllUsers = () => {
   useEffect(() => {
     const fetchStatusTickets = async () => {
       SetisLoading(true);
-      const RoleCodes = ["resident", "admin", "owner", "maintainence"];
+      const RoleCodes = ["resident", "admin","maintainence"];
       if (RoleCodes.includes(userRole)) {
         try {
           const RoleData = await axios.get(`${api}/user/users/${userRole}`);
@@ -76,6 +76,7 @@ const AllUsers = () => {
       } else {
         try {
           const responseRoles = await axios.get(`${api}/user`);
+          console.log(responseRoles.data);
           setAllUsers(responseRoles?.data);
         } catch (error) {
           if("Unauthorized - Token has expired"===error.response.data.message){
@@ -129,7 +130,7 @@ const AllUsers = () => {
     <div className="pb-10 grid place-content-center">
       {PagePosts.length > 0 ? (
         <div className="flex items-center justify-center text-3xl gap-4 text-center font-semibold uppercase xs:max-sm:text-lg">
-          <h1 >{userRole==="all"?"All users":userRole==='maintainence'?"Maintainers":userRole+"s" }</h1>
+          <h1 >{userRole==="all"?"All users":userRole==='maintainence'?"Employees":userRole+"s" }</h1>
           {/* <h1 className=" ">
             USERS
           </h1> */}
@@ -150,10 +151,9 @@ const AllUsers = () => {
             <option value="all" selected>
               All Users
             </option>
-            <option value="resident">Residents</option>
+            <option value="resident">Projects Managers</option>
             <option value="admin">Admins</option>
-            <option value="owner">Owners</option>
-            <option value="maintainence">Maintainers</option>
+            <option value="maintainence">Employees</option>
           </select>
         </div>
         <div>
@@ -204,7 +204,7 @@ const AllUsers = () => {
           ) : (
             <></>
           )}
-          {PageNumbers.map((number, i) => (
+          {PageNumbers.length>1 && PageNumbers.map((number, i) => (
             <li
               key={i}
               onClick={() => ChangeCurrentPage(number)}

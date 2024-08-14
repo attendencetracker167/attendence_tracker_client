@@ -27,11 +27,18 @@ const Login = () => {
       const loginData = await response.data;
       const { role } = loginData;
       setUser(loginData);
+      console.log(loginData)
+
+      // Clear session data
+      sessionStorage.removeItem('clockInTime');
+      sessionStorage.removeItem('clockOutTime');
+      sessionStorage.removeItem('isClockedIn')
+
       if (loginData) {
         if (role == "superadmin") {
-          navigate(`/admin/tickets`);
+          navigate(`/admin/clockin`);
         } else {
-          navigate(`/${role}/tickets`);
+          navigate(`/${role=="resident"?"project-manager":role=="maintainence"?"employee":"admin"}/clockin`);
         }
       }
     } catch (err) {
@@ -45,7 +52,7 @@ const Login = () => {
       <div className=" flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
-            className="mx-auto h-10 w-auto"
+            className="mx-auto  hidden h-10 w-auto"
             src={registerLoader}
             alt="Your Company"
           />

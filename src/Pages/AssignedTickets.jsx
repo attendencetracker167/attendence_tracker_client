@@ -137,7 +137,7 @@ const AssignTickets = () => {
           ) : (
             <></>
           )}
-          {PageNumbers.map((number, i) => (
+          {PageNumbers.length>1&&PageNumbers.map((number, i) => (
             <li
               key={i}
               onClick={() => ChangeCurrentPage(number)}

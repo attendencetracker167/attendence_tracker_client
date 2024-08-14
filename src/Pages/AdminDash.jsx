@@ -32,7 +32,7 @@ const AdminDash = () => {
   }, [api]);
   return (
     <div className="grid place-content-center space-y-2 ">
-      <h1 className="font-semibold text-2xl text-center xs:max-sm:text-lg">DASHBOARD OF APPARTMENT MAINTAINENCE</h1>
+      <h1 className="font-semibold text-2xl text-center xs:max-sm:text-lg">Help Desk Dashboard </h1>
       <div className=" mx-auto p-1  text-white  grid  
       grid-cols-4 gap-6 sm:max-xl:grid-cols-2 xs:max-sm:flex xs:max-sm:flex-col  
       ">

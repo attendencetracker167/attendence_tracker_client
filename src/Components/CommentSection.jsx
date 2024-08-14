@@ -44,7 +44,7 @@ const CommentSection = ({ ticketId }) => {
         // </ScrollToBottom>
       ) : (
         <div className="w-full flex items-center justify-center">
-          NO Commets Post Yet
+          NO Commets Posted Yet
         </div>
       )}
     </div>

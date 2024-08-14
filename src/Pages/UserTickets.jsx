@@ -117,7 +117,6 @@ const UserTickets = () => {
               You Don{"'"}t Created Any Tickets Yet
             </h1>
             <p>
-              if You Have Any Issues in your House, <br />{" "}
               <span className="font-normal">
                 <Link
                   to={`/${user.role}/create-ticket`}
@@ -126,7 +125,7 @@ const UserTickets = () => {
                   Create Ticket
                 </Link>
               </span>{" "}
-              to Solve Your Issue
+              to Solve Issue
             </p>
             <div></div>
           </div>
@@ -141,7 +140,7 @@ const UserTickets = () => {
           ) : (
             <></>
           )}
-          {PageNumbers.map((number, i) => (
+          {PageNumbers.length>1&&PageNumbers.map((number, i) => (
             <li
               key={i}
               onClick={() => ChangeCurrentPage(number)}

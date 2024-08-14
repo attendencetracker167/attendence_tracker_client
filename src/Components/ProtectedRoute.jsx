@@ -7,7 +7,8 @@ const ProtectedRoute = ({ roles }) => {
   const { user } = useAuth();
 
   const location = useLocation();
-  return roles?.includes(user?.role) ? (
+  const role=user?.role=="resident"?"project-manager":user?.role=="maintainence"?"employee":user?.role=="admin"?"admin":"superadmin"
+  return roles?.includes(user?.role && role) ? (
     <div className="flex ">
       <Sidebar />
       <div
