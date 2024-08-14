@@ -2,6 +2,22 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { NavLink } from "react-router-dom";
 import controller from '../../public/assets/control.png'
+import dashboard from '../../public/assets/dashboard.svg'
+import clockin from '../../public/assets/clockin.svg'
+import notepad from '../../public/assets/notepad.svg'
+import tickets from '../../public/assets/tickets.svg'
+import createticket from '../../public/assets/createticket.svg'
+import allusers from '../../public/assets/allusers.svg'
+import register from '../../public/assets/register.svg'
+import settings from '../../public/assets/settings.svg'
+import profile from '../../public/assets/profile.svg'
+
+
+
+
+
+
+
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -11,50 +27,50 @@ const Sidebar = () => {
       title: "Dashboard",
       role: ["admin", "superadmin", "resident","project-manager","employee", "maintainence"],
       path: "/dashboard",
-      src: "dashboard",
+      src: dashboard,
     },
     {
       title: "Web-Clock",
       role: ["admin", "superadmin", "resident","project-manager","employee", "maintainence"],
       path: "/clockin",
-      src: "clockin",
+      src: clockin,
     },
     {
       title: "All Users Records",
       role: ["admin", "superadmin"],
       path: "/all-records",
-      src: "notepad",
+      src: notepad,
     },
     {
       title: "Tickets",
       role: ["admin", "superadmin", "resident", "project-manager","employee","owner", "maintainence"],
       path: "/tickets",
-      src: "tickets",
+      src: tickets,
     },
     {
       title: "Create Ticket",
       role: ["admin", "superadmin", "resident","project-manager"],
       path: "/create-ticket",
-      src: "createticket",
+      src: createticket,
     },
     {
       title: "All users",
       role: ["admin", "superadmin"],
       path: "/allusers",
-      src: "allusers",
+      src: allusers,
       gap: true,
     },
     {
       title: "Register user",
       role: ["admin", "superadmin"],
       path: "/register",
-      src: "register",
+      src: register,
     },
       {
         title: "Add Maintainer roles",
         role: ["admin", "superadmin"],
            path:'/settings',
-           src: "settings",
+           src: settings,
      },
     // {
     //    title: "Assigned Tickets",
@@ -67,7 +83,7 @@ const Sidebar = () => {
       title: "profile",
       role: ["admin", "superadmin", "resident", "project-manager","employee","maintainence", "owner"],
       path: "/profile",
-      src: "profile",
+      src: profile,
       gap: true,
     },
   ];
@@ -108,7 +124,7 @@ const Sidebar = () => {
           } hover:bg-lime-50 hover:bg-opacity-15 duration-100 `}
               onClick={() => setOpen(false)}
             >
-              <img src={`../../public/assets/${Menu.src}.svg`} />
+              <img src= {Menu.src} />
               <span
                  data-te-toggle="tooltip"
                  data-te-placement="right"
