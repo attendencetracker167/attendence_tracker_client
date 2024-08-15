@@ -108,7 +108,7 @@ const TicketDetail = () => {
           {TicketDetail.image ? (
             <div>
               <img
-                src={`http://43.204.109.151:5000/uploads/${imageDate}/${TicketDetail.image}`}
+                src={`https://9wfkkgtr7a.execute-api.ap-south-1.amazonaws.com/uploads/${imageDate}/${TicketDetail.image}`}
                 alt={`image of ${TicketDetail.ticketNo}`}
               />
             </div>
