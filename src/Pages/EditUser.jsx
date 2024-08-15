@@ -169,7 +169,7 @@ const UserProfile = () => {
         <div className="w-32 aspect-square relative mt-4">
           <div className="-z-[1000] h-full rounded-[50%] flex items-center justify-center border-[0.7rem] border-solid border-slate-200 overflow-hidden">
             <img
-              src={`http://43.204.109.151:5000/uploads/users-profile/${
+              src={`https://9wfkkgtr7a.execute-api.ap-south-1.amazonaws.com/uploads/users-profile/${
                 avator ?? "no-avator.png"
               }`}
               alt=""
