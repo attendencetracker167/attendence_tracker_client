@@ -7,7 +7,7 @@ const UserItem = ({role,name,profile,email,id,subrole}) => {
       <div className="min-w-[280px] h-28  break-words  xs:max-sm:max-w-[258px] xs:max-sm:min-w-[258px] sm:max-md:min-w-[380px] md:max-lg:min-w-[310px] md:max-lg:max-w-[310px]  lg:max-xl:min-w-[300px] lg:max-xl:max-w-[300px] lg:max-xl:min-h-32 lg:max-xl:max-h-32 xl:min-w-[300px] xl:max-w-[300px]
       xxl:min-w-[400px] xxl:min-h-32   relative  flex items-center space-x-4   xs:max-sm:space-x-2 xxl:gap-x-6 ">
         <div className="">
-              <img className="rounded-full bg-cover border-2 min-w-14 max-w-14 min-h-14 max-h-14 border-indigo-500" src={`http://43.204.109.151:5000/uploads/users-profile/${profile??"no-avator.png"}`} alt={`${name}`} />
+              <img className="rounded-full bg-cover border-2 min-w-14 max-w-14 min-h-14 max-h-14 border-indigo-500" src={`https://9wfkkgtr7a.execute-api.ap-south-1.amazonaws.com/uploads/users-profile/${profile??"no-avator.png"}`} alt={`${name}`} />
         </div>
         <div className="flex flex-col space-y-2">
             <h1  className="xs:max-sm:text-[12px] md:max-lg:text-[13px]">Username : {name}</h1>
